@@ -1,0 +1,18 @@
+import java.util.Scanner;
+class Parent{
+void m1(){
+System.out.println("I am a cat");
+}
+}
+class Child extends Parent{
+void m1(){
+System.out.println("I am a kitten");
+}
+}
+public class Calculator{
+public static void main(String[] args) {
+Parent p=new Parent();
+Child c=new Child();
+p.m1();
+c.m1();
+}

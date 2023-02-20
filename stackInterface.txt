@@ -1,0 +1,115 @@
+import java.util.Scanner;
+interface Stackable{
+void push(int n);
+void pop();
+void resize(int n);
+void display();
+}
+class StackOps implements Stackable{
+int top, stk[], size;
+StackOps(int n){
+top=-1;
+stk=new int[n];
+size=n;
+}
+public void push(int n) {
+if(top<size-1){
+stk[++top]=n;
+}
+else{
+System.out.println("full stack");
+}
+}
+public void pop() {
+if(top>=0){
+top--;
+}
+else{
+System.out.println("empty stack");
+}
+}
+public void resize(int n) {
+int[] b=new int[n];
+for(int i=0;i<=top;i++){
+b[i]=stk[i];
+}
+stk=new int[n];
+stk=b;
+size=n;
+}
+public void display() {
+if(top>=0){
+for(int i=0;i<=top;i++){
+System.out.print(" "+stk[i]);
+}
+System.out.println();
+}
+else{
+System.out.println("empty stack");
+}
+}
+}
+public class Calculator{
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.print("enter size of the stack: ");
+int n=sc.nextInt();
+StackOps op=new StackOps(n);
+System.out.println("1 to push\n2 to pop\n3 to display\n4 to resize\n5 to exit");
+while(true){
+int ch;
+System.out.println("enter your choice: ");
+ch=sc.nextInt();
+switch(ch){
+case 1: System.out.println("enter a number: ");
+n=sc.nextInt();
+op.push(n);
+break;
+case 2: op.pop();
+break;
+case 3: op.display();
+}
+else{
+System.out.println("empty stack");
+}
+}
+public void resize(int n) {
+int[] b=new int[n];
+for(int i=0;i<=top;i++){
+b[i]=stk[i];
+}
+stk=new int[n];
+stk=b;
+size=n;
+}
+public void display() {
+if(top>=0){
+for(int i=0;i<=top;i++){
+System.out.print(" "+stk[i]);
+}
+System.out.println();
+}
+else{
+System.out.println("empty stack");
+}
+}
+}
+public class Calculator{
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.print("enter size of the stack: ");
+int n=sc.nextInt();
+StackOps op=new StackOps(n);
+System.out.println("1 to push\n2 to pop\n3 to display\n4 to resize\n5 to exit");
+while(true){
+int ch;
+System.out.println("enter your choice: ");
+ch=sc.nextInt();
+switch(ch){
+case 1: System.out.println("enter a number: ");
+n=sc.nextInt();
+op.push(n);
+break;
+case 2: op.pop();
+break;
+case 3: op.display();
