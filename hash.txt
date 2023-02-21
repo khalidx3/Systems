@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int key;
+	struct node *next;
+}*ht[10]={NULL};  // gloabal array...automatically initialized to zeros
+void insert(int k)
+{
+	struct node *nn;
+	nn= (struct node*)malloc(sizeof(struct node));
+	nn->key=k;
+	int j=k%10;
+	nn->next=ht[j];
+	ht[j]=nn;
+}
+int search(int k)
+{
+	int j=k%10;
+	struct node *cur=ht[j];
+	while(cur!=NULL)
+	{
+		if(cur->key==k)
+		return 1;
+		cur=cur->next;
+	}
+	return -1;
+}
+void display()
+{
+	int i;
+	printf("\n");
+	for(i=0;i<10;i++)
+	{
+		struct node *temp=ht[i];
+		while(temp!=NULL)
+		{
+			printf("%d ",temp->key);
+			temp=temp->next;
+		}
+	}
+}
+int main()
+{
+	
+	insert(2);
+	insert(12);
+	insert(22);
+	insert(5);
+	insert(16);
+	insert(3);
+	display();
+	int pos=search(42);
+	if(pos==1)
+		printf("Found");
+	else
+		printf("Not Found");
+	return 0;
+}
